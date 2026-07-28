@@ -2,75 +2,79 @@ commands:
   - id: command.move
     name: Move
     description: Travel to a connected setting.
-    aliases: [go, walk]
     parameters:
       - name: destination
         description: The setting to enter.
-        accepts: [setting]
+        type: setting
         required: true
+    effects:
+      - operation: move
+        subjects: [player]
+        setting: param1
 
   - id: command.examine
     name: Examine
     description: Inspect a person, place, or object.
-    aliases: [inspect, look]
     parameters:
-      - name: target
-        description: The character, setting, or entity to inspect.
-        accepts: [character, setting, entity]
-        required: true
+      - name: entity
+        description: The object to inspect, when examining an object.
+        type: entity
+        required: false
+      - name: character
+        description: The person to inspect, when examining a person.
+        type: character
+        required: false
+      - name: setting
+        description: The place to inspect, when examining a place.
+        type: setting
+        required: false
 
   - id: command.question
     name: Question
     description: Ask a character about a topic.
-    aliases: [ask, interview]
     parameters:
       - name: character
         description: The character to question.
-        accepts: [character]
+        type: character
         required: true
-      - name: topic
-        description: The optional subject of the question.
-        accepts: [character, setting, event, entity, fact, deduction, time]
+      - name: topic_character
+        description: The optional person being discussed.
+        type: character
+        required: false
+      - name: topic_setting
+        description: The optional place being discussed.
+        type: setting
+        required: false
+      - name: topic_event
+        description: The optional event being discussed.
+        type: event
+        required: false
+      - name: topic_entity
+        description: The optional object being discussed.
+        type: entity
+        required: false
+      - name: topic_deduction
+        description: The optional deduction being discussed.
+        type: deduction
         required: false
 
   - id: command.claim
     name: Claim
     description: Add an available fact to the player's claimed notebook facts.
-    aliases: [accept, assert]
-    parameters:
-      - name: fact
-        description: The available fact to claim.
-        accepts: [fact]
-        required: true
 
   - id: command.deduce
     name: Deduce
     description: Combine two or three claimed facts or deductions.
-    aliases: [connect, infer]
-    parameters:
-      - name: evidence_a
-        description: The first known fact or deduction.
-        accepts: [fact, deduction]
-        required: true
-      - name: evidence_b
-        description: The second known fact or deduction.
-        accepts: [fact, deduction]
-        required: true
-      - name: evidence_c
-        description: An optional third known fact or deduction.
-        accepts: [fact, deduction]
-        required: false
 
   - id: command.solve
     name: Solve
     description: Accuse a suspect using a deduction that explains the case.
-    aliases: [accuse]
     parameters:
       - name: suspect
         description: The character being accused.
-        accepts: [character]
+        type: character
         required: true
       - name: theory
         description: The deduction offered as the solution.
-        accepts: [deduction]
+        type: deduction
         required: true

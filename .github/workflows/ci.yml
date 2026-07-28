@@ -15,4 +15,4 @@ jobs:
       - name: Check out story
         uses: actions/checkout@v4
       - name: Run narrator validator
-        uses: phurley/narrator-validator@281029b92e1c3a3c2c7f38ef7788f7311da3d550
+        uses: phurley/narrator-validator@387c9a316bb8cd876932e89a7ae3547f86f02d84
