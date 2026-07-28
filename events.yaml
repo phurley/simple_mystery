@@ -1,0 +1,19 @@
+events:
+  - id: event.murder
+    day: 0
+    time: "20:15"
+    duration_minutes: 0
+    location: setting.study
+    participants:
+      - character.adrian_bell
+      - character.lena_ortiz
+    summary: Lena kills Adrian with the brass service bell.
+
+  - id: event.body_found
+    day: 0
+    time: "20:25"
+    duration_minutes: 0
+    location: setting.study
+    participants:
+      - character.priya_shah
+    summary: Priya enters the study and finds Adrian behind his desk.

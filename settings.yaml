@@ -1,0 +1,80 @@
+case:
+  id: case.last_bell_at_briar_house
+  format_version: 2
+  title: The Last Bell at Briar House
+  genre: closed-circle murder mystery
+  tone:
+    - cozy
+    - concise
+    - fair-play
+  intended_players: 1-4
+  estimated_duration_minutes: 30
+  entry_settings:
+    - setting.parlor
+  exit_settings:
+    - setting.parlor
+  premise: >
+    Briar House Inn is closed for the night with only five people inside.
+    Owner Adrian Bell is found dead in his study just before he planned to
+    confront someone about money missing from the inn.
+  opening: >
+    At 20:25 Priya Shah calls everyone into the study. Adrian Bell lies behind
+    his desk, his brass service bell on the carpet beside him. The four other
+    people in the inn are now the only possible suspects.
+
+solution:
+  victim: character.adrian_bell
+  culprit: character.lena_ortiz
+  weapon: entity.brass_service_bell
+  location: setting.study
+  time: "20:15"
+  deduction: deduction.lena_killed_adrian
+  motive: >
+    Adrian discovered that Lena had kept several cash deposits and intended to
+    dismiss her and report the theft that night.
+  method: >
+    Lena used her door code to enter the study at 20:12. During the
+    confrontation she struck Adrian with the brass service bell at 20:15, then
+    left at 20:17 and claimed she had been checking pantry stock.
+  proof_summary: >
+    Adrian's stopped watch fixes the time of the fatal blow. Blood and the shape
+    of the wound identify the brass bell as the weapon. The study log places
+    Lena alone with Adrian across the murder time, and the cash ledger shows
+    both her theft and her sole responsibility for the missing deposits. The
+    red wool on Adrian's sleeve came from returning Noah's scarf earlier and is
+    the story's single red herring; the hall phone log proves Noah was elsewhere.
+
+settings:
+  - id: setting.parlor
+    type: room
+    name: Parlor
+    description: >
+      The inn's central sitting room, with the hall telephone beside the front
+      desk.
+
+  - id: setting.study
+    type: room
+    name: Adrian's Study
+    description: >
+      A compact office containing Adrian's desk, the inn accounts, and an
+      electronic lock that records each entry and exit.
+
+  - id: setting.kitchen
+    type: room
+    name: Kitchen and Pantry
+    description: >
+      A bright working kitchen with a pantry alcove and a clear view into the
+      parlor.
+
+routes:
+  - id: route.parlor_study
+    from: setting.parlor
+    to: setting.study
+    bidirectional: true
+    travel_minutes: 1
+
+  - id: route.parlor_kitchen
+    from: setting.parlor
+    to: setting.kitchen
+    bidirectional: true
+    travel_minutes: 1

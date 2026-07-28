@@ -1,0 +1,146 @@
+characters:
+  - id: character.adrian_bell
+    type: character
+    name: Adrian Bell
+    role: victim
+    age: 61
+    occupation: Owner of Briar House Inn
+    public_description: >
+      A precise, demanding innkeeper who expected every account to balance.
+    private:
+      goal: Confront Lena about the missing cash before the night ended.
+      secret: Adrian had completed an audit proving that Lena kept the deposits.
+    knowledge:
+      - fact: fact.cash_deposits_missing
+        source: entity.cash_ledger
+      - fact: fact.lena_managed_cash_deposits
+        source: entity.cash_ledger
+    facts:
+      - id: fact.adrian_found_dead
+        statement: Adrian Bell is dead.
+        category: scene
+        about: [character.adrian_bell, event.body_found]
+
+      - id: fact.body_found_in_study
+        statement: Adrian's body was found behind the desk in his study.
+        category: scene
+        about: [character.adrian_bell, setting.study, event.body_found]
+
+      - id: fact.watch_stopped_at_2015
+        statement: Adrian's cracked wristwatch stopped at 20:15.
+        category: timeline
+        about: [character.adrian_bell, entity.adrian_watch, event.murder]
+        requires: [command.examine, entity.adrian_watch]
+
+      - id: fact.wound_matches_bell
+        statement: The curved wound on Adrian's temple matches the rim of the brass service bell.
+        category: physical_evidence
+        about: [character.adrian_bell, entity.brass_service_bell]
+        requires: [command.examine, character.adrian_bell]
+
+  - id: character.lena_ortiz
+    type: character
+    name: Lena Ortiz
+    role: culprit
+    age: 42
+    occupation: Inn manager
+    public_description: >
+      Efficient and composed, Lena has managed Briar House and its daily
+      accounts for six years.
+    private:
+      goal: Keep Adrian from exposing the money she took.
+      motive: >
+        Adrian's audit proved Lena had kept the inn's cash deposits.
+      method: >
+        Lena entered the study with her own code, struck Adrian with the brass
+        bell, and left before claiming she had spent the whole time in the pantry.
+      cover_story: >
+        Lena says she checked pantry stock alone from 20:10 until Priya found
+        Adrian at 20:25.
+    knowledge:
+      - fact: fact.watch_stopped_at_2015
+        source: event.murder
+      - fact: fact.cash_deposits_missing
+        source: entity.cash_ledger
+    testimony:
+      default: >
+        Insist that the pantry inventory took longer than expected and that
+        Adrian was alive when she last saw him at dinner.
+      under_pressure: >
+        Admit using the study door earlier in the evening, but deny being there
+        at 20:12 unless confronted with the door log.
+    facts:
+      - id: fact.code_14_belongs_to_lena
+        statement: Study door code 14 is assigned only to Lena.
+        category: access
+        about: [character.lena_ortiz, entity.study_door_log]
+        requires: [command.question, character.lena_ortiz, entity.study_door_log]
+
+      - id: fact.lena_claimed_pantry_alibi
+        statement: Lena claimed she was checking pantry stock throughout the murder window.
+        category: testimony
+        about: [character.lena_ortiz, setting.kitchen, event.murder]
+        requires: [command.question, character.lena_ortiz, event.murder]
+
+      - id: fact.lena_managed_cash_deposits
+        statement: Lena alone prepared and delivered Briar House's cash deposits.
+        category: access
+        about: [character.lena_ortiz, entity.cash_ledger]
+        requires: [command.question, character.lena_ortiz, entity.cash_ledger]
+
+  - id: character.noah_bell
+    type: character
+    name: Noah Bell
+    role: suspect
+    age: 31
+    occupation: Adrian's son
+    public_description: >
+      Adrian's soft-spoken son, visiting Briar House before returning home the
+      next morning.
+    private:
+      goal: Persuade Adrian to retire and sell the inn.
+      secret: >
+        Adrian picked Noah's fallen scarf up earlier that evening and returned
+        it to him.
+    testimony:
+      default: >
+        Say that he was making a call from the parlor telephone when Adrian died.
+    facts:
+      - id: fact.noah_scarf_has_fresh_snag
+        statement: Noah's red wool scarf has a fresh snag along one edge.
+        category: physical_evidence
+        about: [character.noah_bell, entity.red_wool_fiber]
+        requires: [command.examine, character.noah_bell]
+
+  - id: character.priya_shah
+    type: character
+    name: Priya Shah
+    role: suspect
+    age: 36
+    occupation: Chef
+    public_description: >
+      Briar House's practical chef, closing the kitchen after the last dinner.
+    private:
+      goal: Finish the evening and leave for a long-planned holiday.
+      secret: Priya found Adrian only after going to ask him to lock the wine cabinet.
+    testimony:
+      default: >
+        Explain that she could see the parlor from the kitchen and heard Noah
+        speaking on the hall telephone.
+    facts: []
+
+  - id: character.marcus_green
+    type: character
+    name: Marcus Green
+    role: suspect
+    age: 55
+    occupation: Caretaker
+    public_description: >
+      The quiet caretaker, finishing small repairs in the parlor before closing.
+    private:
+      goal: Complete the repairs before the inn reopens in the morning.
+      secret: Marcus noticed Lena leave the parlor shortly before the murder.
+    testimony:
+      default: >
+        Confirm that the five named people were the only people in Briar House
+        and that no exterior door opened that evening.

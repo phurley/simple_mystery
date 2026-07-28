@@ -1,0 +1,63 @@
+deductions:
+  - id: deduction.murder_happened_at_2015
+    conclusion: Adrian was struck and killed at 20:15.
+    inputs:
+      - fact.watch_stopped_at_2015
+      - fact.adrian_found_dead
+    truth: true
+
+  - id: deduction.bell_was_murder_weapon
+    conclusion: The brass service bell was the weapon used to kill Adrian.
+    inputs:
+      - fact.adrian_blood_on_bell
+      - fact.wound_matches_bell
+    truth: true
+
+  - id: deduction.lena_had_opportunity
+    conclusion: Lena was alone in the study with Adrian when he was killed.
+    inputs:
+      - fact.code_14_belongs_to_lena
+      - fact.code_14_entered_study_at_2012
+      - fact.study_closed_until_2017
+    truth: true
+
+  - id: deduction.lena_had_motive
+    conclusion: Lena had an immediate motive to stop Adrian from exposing her theft.
+    inputs:
+      - fact.cash_deposits_missing
+      - fact.lena_managed_cash_deposits
+    truth: true
+
+  - id: deduction.noah_had_alibi
+    conclusion: Noah was on the parlor telephone when Adrian was killed.
+    inputs:
+      - fact.noah_on_parlor_phone_2013_to_2018
+      - deduction.murder_happened_at_2015
+    truth: true
+
+  - id: deduction.noah_was_at_murder
+    conclusion: The red wool proves Noah struggled with Adrian when Adrian was killed.
+    inputs:
+      - fact.red_fiber_on_adrian
+      - fact.red_fiber_matches_noah_scarf
+      - fact.noah_scarf_has_fresh_snag
+    contradicted_by:
+      - deduction.noah_had_alibi
+    truth: false
+
+  - id: deduction.lena_killed_adrian
+    conclusion: Lena Ortiz murdered Adrian Bell in his study with the brass service bell.
+    inputs:
+      - deduction.bell_was_murder_weapon
+      - deduction.lena_had_opportunity
+      - deduction.lena_had_motive
+    requires:
+      - deduction.bell_was_murder_weapon
+      - deduction.lena_had_opportunity
+      - deduction.lena_had_motive
+    truth: true
+    solves:
+      culprit: character.lena_ortiz
+      weapon: entity.brass_service_bell
+      location: setting.study
+      time: "20:15"

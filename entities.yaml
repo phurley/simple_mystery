@@ -1,0 +1,113 @@
+entities:
+  - id: entity.brass_service_bell
+    type: object
+    name: Brass service bell
+    initial:
+      container: setting.study
+      position: On the carpet beside Adrian's desk
+      condition: Dented and recently wiped
+    observations:
+      casual: A heavy brass bell with a curved rim.
+      examined: >
+        A wiped smear remains in the seam beneath the rim. It is Adrian's blood.
+    facts:
+      - id: fact.adrian_blood_on_bell
+        statement: Adrian's blood remains in the seam beneath the brass bell's rim.
+        category: physical_evidence
+        about: [character.adrian_bell, entity.brass_service_bell]
+        requires: [command.examine, entity.brass_service_bell]
+
+  - id: entity.adrian_watch
+    type: object
+    name: Adrian's wristwatch
+    initial:
+      container: character.adrian_bell
+      condition: Cracked and stopped
+    observations:
+      casual: A plain wristwatch with a cracked crystal.
+      examined: >
+        The impact stopped its hands at exactly 20:15.
+
+  - id: entity.study_door_log
+    type: document
+    name: Study door log
+    initial:
+      container: setting.study
+      condition: Stored in the electronic lock
+    observations:
+      examined: >
+        Code 14 entered at 20:12. The door did not open again until the same
+        code exited at 20:17.
+    facts:
+      - id: fact.code_14_entered_study_at_2012
+        statement: Door code 14 entered Adrian's study at 20:12.
+        category: timeline
+        about: [entity.study_door_log, setting.study, event.murder]
+        requires: [command.examine, entity.study_door_log]
+
+      - id: fact.study_closed_until_2017
+        statement: After code 14 entered, the study door stayed closed until 20:17.
+        category: timeline
+        about: [entity.study_door_log, setting.study, event.murder]
+        requires: [command.examine, entity.study_door_log]
+
+  - id: entity.cash_ledger
+    type: document
+    name: Cash deposit ledger
+    initial:
+      container: setting.study
+      position: Open on Adrian's desk
+      condition: Marked with Adrian's audit notes
+    observations:
+      casual: The inn's weekly cash-deposit record.
+      examined: >
+        Adrian circled four deposits totaling 4,800 dollars that were recorded
+        at the inn but never reached the bank.
+    facts:
+      - id: fact.cash_deposits_missing
+        statement: Four Briar House cash deposits totaling 4,800 dollars never reached the bank.
+        category: financial
+        about: [entity.cash_ledger, character.adrian_bell, character.lena_ortiz]
+        requires: [command.examine, entity.cash_ledger]
+
+  - id: entity.red_wool_fiber
+    type: object
+    name: Red wool fiber
+    initial:
+      container: character.adrian_bell
+      position: Caught on Adrian's sleeve
+      condition: Fresh
+    observations:
+      casual: A short red strand caught against the dark cloth of Adrian's sleeve.
+      examined: >
+        The wool is the same color and weave as Noah's scarf. Adrian had picked
+        up and returned that scarf earlier in the evening.
+    facts:
+      - id: fact.red_fiber_on_adrian
+        statement: A fresh red wool fiber was caught on Adrian's sleeve.
+        category: physical_evidence
+        about: [character.adrian_bell, entity.red_wool_fiber]
+        requires: [command.examine, entity.red_wool_fiber]
+
+      - id: fact.red_fiber_matches_noah_scarf
+        statement: The red fiber matches the wool in Noah's scarf.
+        category: physical_evidence
+        about: [character.noah_bell, entity.red_wool_fiber]
+        requires: [command.examine, entity.red_wool_fiber]
+
+  - id: entity.hall_phone_log
+    type: document
+    name: Hall telephone log
+    initial:
+      container: setting.parlor
+      condition: Available on the telephone display
+    observations:
+      examined: >
+        The parlor telephone was connected to Noah's home number continuously
+        from 20:13 to 20:18.
+    facts:
+      - id: fact.noah_on_parlor_phone_2013_to_2018
+        statement: Noah used the parlor telephone continuously from 20:13 to 20:18.
+        category: alibi
+        about: [character.noah_bell, entity.hall_phone_log, setting.parlor, event.murder]
+        requires: [command.examine, entity.hall_phone_log]
