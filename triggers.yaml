@@ -1,1 +1,24 @@
-triggers: []
+triggers:
+  - id: trigger.move_between_rooms
+    name: Move between connected rooms
+    command: command.move
+    description: Follow an available route through the closed inn.
+    all_of:
+      - flag.inn_closed_for_night
+    effects:
+      - operation: move
+        target: $actor
+        value: $destination
+      - operation: advance_time_by_route
+        target: $actor
+        value: $destination
+
+  - id: trigger.examine_murder_scene
+    name: Examine the murder scene
+    command: command.examine
+    description: Inspect the study and the brass service bell after Adrian's body is found.
+    once: true
+    location: setting.study
+    all_of:
+      - entity.brass_service_bell
+      - flag.investigation_open

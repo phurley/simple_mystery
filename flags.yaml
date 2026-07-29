@@ -1,0 +1,10 @@
+flags:
+  - id: flag.investigation_open
+    name: Investigation open
+    description: Adrian's body has been found and the guests may begin investigating.
+    initial_state: true
+
+  - id: flag.inn_closed_for_night
+    name: Inn closed for the night
+    description: Briar House is secured, leaving only the five people inside as suspects.
+    initial_state: true
