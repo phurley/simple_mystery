@@ -8,7 +8,7 @@ permissions:
   contents: read
 
 env:
-  VALIDATOR_VERSION: 0.7.0
+  VALIDATOR_RELEASE: 0.7.0-3454dc9b12b00443
 
 jobs:
   validate:
@@ -22,7 +22,7 @@ jobs:
         run: |
           set -euo pipefail
           validator_dir="$RUNNER_TEMP/narrator-validator"
-          validator_url="https://allisonhurley.com/validator/${VALIDATOR_VERSION}"
+          validator_url="https://allisonhurley.com/validator/${VALIDATOR_RELEASE}"
           mkdir -p "$validator_dir"
           for file in index.js narrator_validator.js narrator_validator_bg.wasm package.json validate.mjs; do
             curl --fail --silent --show-error --retry 3 \
