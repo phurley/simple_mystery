@@ -16,14 +16,14 @@ triggers:
   - id: trigger.examine_murder_scene
     name: Examine the murder scene
     command: command.examine
-    description: Inspect the study and the brass service bell after Adrian's body is found.
+    description: Inspect Adrian or the brass service bell in the study after the body is found.
     once: true
     time:
       relation: after
-      value: "20:25"
+      value: "20:24"
     location: setting.study
     all_of:
       - flag.investigation_open
     any_of:
-      - character.priya_shah
+      - character.adrian_bell
       - entity.brass_service_bell

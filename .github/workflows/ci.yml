@@ -7,6 +7,9 @@ on:
 permissions:
   contents: read
 
+env:
+  VALIDATOR_VERSION: 0.7.0
+
 jobs:
   validate:
     name: Validate story
@@ -14,5 +17,25 @@ jobs:
     steps:
       - name: Check out story
         uses: actions/checkout@v4
+      - name: Download pinned narrator validator
+        shell: bash
+        run: |
+          set -euo pipefail
+          validator_dir="$RUNNER_TEMP/narrator-validator"
+          validator_url="https://allisonhurley.com/validator/${VALIDATOR_VERSION}"
+          mkdir -p "$validator_dir"
+          for file in index.js narrator_validator.js narrator_validator_bg.wasm package.json validate.mjs; do
+            curl --fail --silent --show-error --retry 3 \
+              "${validator_url}/${file}" \
+              --output "${validator_dir}/${file}"
+          done
+          cd "$validator_dir"
+          sha256sum --check <<'CHECKSUMS'
+          e7a34634aba4d7f1b55d9032e1231d46ed94740ad2000054040d13a82288f9cc  index.js
+          7e73cb2df04e791ad3c9819789e4ca0c43f3fba53f2b6b28c4d92d045b974820  narrator_validator.js
+          07ad0d24c2c3817629c630826f07024660fa718d19ce34f101ccbc01246cf037  narrator_validator_bg.wasm
+          c0fb8858ee36eb8170763fde5c00bda6f7fa47e7117b4da04da6f775f79e0c2f  package.json
+          1445845bbea1e14c0256675d0f4cd997bb694bad91528a1802be78c1eabf3c02  validate.mjs
+          CHECKSUMS
       - name: Run narrator validator
-        uses: phurley/narrator-validator@387c9a316bb8cd876932e89a7ae3547f86f02d84
+        run: node "$RUNNER_TEMP/narrator-validator/validate.mjs" "$GITHUB_WORKSPACE"
