@@ -18,7 +18,12 @@ triggers:
     command: command.examine
     description: Inspect the study and the brass service bell after Adrian's body is found.
     once: true
+    time:
+      relation: after
+      value: "20:25"
     location: setting.study
     all_of:
-      - entity.brass_service_bell
       - flag.investigation_open
+    any_of:
+      - character.priya_shah
+      - entity.brass_service_bell
