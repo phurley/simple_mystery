@@ -2,6 +2,18 @@
 
 A deliberately small format-2 story for testing basic Narrator gameplay.
 
+## Action schema
+
+Actions use one concrete story-object type per parameter. For polymorphic
+examine and question actions, select the one optional character, entity,
+setting, event, or deduction parameter that matches the intended target.
+Moving always moves the acting player to the selected setting.
+
+Facts are intentionally not an action parameter type. `command.claim` and
+`command.deduce` therefore remain parameterless engine hooks until notebook and
+deduction turns move into the gameplay engine. Fact and time topics on
+`command.question` are not representable by the new action form either.
+
 ## Test shape
 
 - Exactly five characters: one victim and four suspects
