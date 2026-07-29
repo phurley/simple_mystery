@@ -1,6 +1,7 @@
 case:
   id: case.last_bell_at_briar_house
   format_version: 2
+  initial_time: "20:25"
   title: The Last Bell at Briar House
   genre: closed-circle murder mystery
   tone:
