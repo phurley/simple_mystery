@@ -19,7 +19,7 @@ deduction turns move into the gameplay engine. Fact and time topics on
 - Exactly five characters: one victim and four suspects
 - Three navigable rooms with two simple routes
 - Five examinable objects or records
-- No hidden routes, inventory gates, tags, delayed work, or custom triggers
+- No hidden routes, inventory gates, or delayed work
 - One false deduction based on one red herring: the red wool fiber
 - A short three-branch path to the final solution
 

@@ -8,7 +8,7 @@ permissions:
   contents: read
 
 env:
-  VALIDATOR_RELEASE: 0.7.0-3454dc9b12b00443
+  VALIDATOR_RELEASE: 0.8.0-67059db67ce139f0
 
 jobs:
   validate:
@@ -33,8 +33,8 @@ jobs:
           sha256sum --check <<'CHECKSUMS'
           e7a34634aba4d7f1b55d9032e1231d46ed94740ad2000054040d13a82288f9cc  index.js
           7e73cb2df04e791ad3c9819789e4ca0c43f3fba53f2b6b28c4d92d045b974820  narrator_validator.js
-          07ad0d24c2c3817629c630826f07024660fa718d19ce34f101ccbc01246cf037  narrator_validator_bg.wasm
-          c0fb8858ee36eb8170763fde5c00bda6f7fa47e7117b4da04da6f775f79e0c2f  package.json
+          907d79f0621af69256f96018afc8c1449071037926955a7be2b4267070aa5ae4  narrator_validator_bg.wasm
+          3027098c40f0691a5c5bf1ae2adff793dab3215a3cec362c3fabf3e0a388d24f  package.json
           1445845bbea1e14c0256675d0f4cd997bb694bad91528a1802be78c1eabf3c02  validate.mjs
           CHECKSUMS
       - name: Run narrator validator
