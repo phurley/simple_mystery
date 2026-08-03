@@ -57,18 +57,18 @@ characters:
       cover_story: >
         Lena says she checked pantry stock alone from 20:10 until Priya found
         Adrian at 20:25.
+      testimony:
+        default: >
+          Insist that the pantry inventory took longer than expected and that
+          Adrian was alive when she last saw him at dinner.
+        under_pressure: >
+          Admit using the study door earlier in the evening, but deny being there
+          at 20:12 unless confronted with the door log.
     knowledge:
       - fact: fact.watch_stopped_at_2015
         source: event.murder
       - fact: fact.cash_deposits_missing
         source: entity.cash_ledger
-    testimony:
-      default: >
-        Insist that the pantry inventory took longer than expected and that
-        Adrian was alive when she last saw him at dinner.
-      under_pressure: >
-        Admit using the study door earlier in the evening, but deny being there
-        at 20:12 unless confronted with the door log.
     facts:
       - id: fact.code_14_belongs_to_lena
         statement: Study door code 14 is assigned only to Lena.
@@ -102,9 +102,9 @@ characters:
       secret: >
         Adrian picked Noah's fallen scarf up earlier that evening and returned
         it to him.
-    testimony:
-      default: >
-        Say that he was making a call from the parlor telephone when Adrian died.
+      testimony:
+        default: >
+          Say that he was making a call from the parlor telephone when Adrian died.
     facts:
       - id: fact.noah_scarf_has_fresh_snag
         statement: Noah's red wool scarf has a fresh snag along one edge.
@@ -123,10 +123,10 @@ characters:
     private:
       goal: Finish the evening and leave for a long-planned holiday.
       secret: Priya found Adrian only after going to ask him to lock the wine cabinet.
-    testimony:
-      default: >
-        Explain that she could see the parlor from the kitchen and heard Noah
-        speaking on the hall telephone.
+      testimony:
+        default: >
+          Explain that she could see the parlor from the kitchen and heard Noah
+          speaking on the hall telephone.
     facts: []
 
   - id: character.marcus_green
@@ -140,7 +140,7 @@ characters:
     private:
       goal: Complete the repairs before the inn reopens in the morning.
       secret: Marcus noticed Lena leave the parlor shortly before the murder.
-    testimony:
-      default: >
-        Confirm that the five named people were the only people in Briar House
-        and that no exterior door opened that evening.
+      testimony:
+        default: >
+          Confirm that the five named people were the only people in Briar House
+          and that no exterior door opened that evening.
