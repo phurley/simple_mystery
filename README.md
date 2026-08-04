@@ -54,3 +54,5 @@ SOLVE character.lena_ortiz deduction.lena_killed_adrian
 
 The optional red-herring path points to Noah. Examining the hall telephone log
 and Adrian's watch produces the deduction that disproves it.
+
+> Workspace branch created at `2026-08-04T20:59:37.342Z`.
